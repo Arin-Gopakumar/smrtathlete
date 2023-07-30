@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Our Team{% endblock %}
+{% block content %}
+<div class="container mt-5" style="background: #363737;">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h1 class="text-center mb-4 text-white" style="font-family: Roboto;"><b>Our Team</b></h1>
+      <h5 class="text-center mt-4 text-white" style="font-family: Roboto;">
+
+        <div class="team-member text-white" style="padding: 20px; display: flex; flex-direction: column; align-items: center;">
+        <img src="{{ url_for('static', filename='photos/arin.png') }}" alt="Arin Gopakumar" width="150" height="150" style="border-radius: 50%; border: 2px solid #ff4444;">
+        <h3 style="font-family: Roboto;"><b>Arin Gopakumar</b></h3>
+        <p style="font-family: Roboto; font-size: 18px;">Co-Founder & CEO</p>
+        <p style="font-family: Roboto; font-size: 16px;">As Co-Founder and CEO,&nbsp Arin is responsible for implementing new plans so that Smart Athlete can thrive.
+        Furthemore,&nbsp Arin is also responsible for programming the entire database.</p>
+      </div>
+
+      <div class="team-member text-white" style="padding: 20px; display: flex; flex-direction: column; align-items: center;">
+        <img src="{{ url_for('static', filename='photos/syan.png') }}" alt="Syan Jain" width="150" height="150" style="border-radius: 50%; border: 2px solid #4285F4;">
+        <h3 style="font-family: Roboto;"><b>Syan Jain</b></h3>
+        <p style="font-family: Roboto; font-size: 18px;">Co-Founder & CFO</p>
+        <p style="font-family: Roboto; font-size: 16px;">As Co-Founder and CFO,&nbsp Syan is responsible for managing Smart Athlete's finances. He is also responsible for getting Smart Athlete
+        incoporated as a 501(c)(3) non-profit organization.</p>
+      </div>
+
+      <div class="team-member text-white" style="padding: 20px;">
+        <img src="{{ url_for('static', filename='photos/armon.png') }}" alt="Armon Setoodeh" width="150" height="150" style="border-radius: 50%; border: 2px solid #ff4444;">
+        <h3 style="font-family: Roboto;"><b>Armon Setoodeh</b></h3>
+        <p style="font-family: Roboto; font-size: 18px;">Co-Founder & COO</p>
+        <p style="font-family: Roboto; font-size: 16px;">As Co-Founder and COO,&nbsp Armon oversees the external day-to-day operations. He is constantly in contact with other schools 
+            with the hopes of fostering partnerships.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

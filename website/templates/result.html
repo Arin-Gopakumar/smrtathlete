@@ -1,0 +1,70 @@
+<!-- result.html -->
+{% extends "base.html" %}
+{% block title %}Concussion Result{% endblock %}
+
+{% block content %}
+<style>
+    /* Custom CSS to style the interpretation section */
+    .interpretation li strong {
+        color: red;
+    }
+
+    /* Custom CSS to update color for specific ranges */
+    .interpretation li strong.green {
+        color: green;
+    }
+
+    .interpretation li strong.yellow {
+        color: yellow;
+    }
+
+    .interpretation li strong.orange {
+        color: rgb(255, 166, 0);
+    }
+
+    .interpretation li strong.red {
+        color: red;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h4 class="text-white" style="font-family: Roboto;">
+                Your Concussion Score: <span id="userScore" style="color: #f7f7f7; font-family: Roboto;"></span>%
+            </h4>
+            
+            <div class="mt-4 interpretation">
+                <ul class="text-white" style="font-family: Roboto; list-style-type: none; padding-left: 0;">
+                    <li>
+                        <strong class="green">0 - 30%:</strong> Low risk of concussion. However, if you have symptoms or concerns, consult a healthcare professional.
+                    </li>
+                    <br>
+                    <li>
+                        <strong class="yellow">31% - 60%:</strong> Moderate risk of concussion. Consider consulting a healthcare professional for further evaluation.
+                    </li>
+                    <br>
+                    <li>
+                        <strong class="orange">61% - 90%:</strong> High risk of concussion. It is recommended to consult a doctor for a proper diagnosis and care.
+                    </li>
+                    <br>
+                    <li>
+                        <strong class="red">91% - 100%:</strong> Very high risk of concussion. Immediate medical attention is advised. Please see a doctor immediately.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Retrieve the user's score from the session and display it
+    const userScore = sessionStorage.getItem('userScore');
+    if (userScore !== null) {
+        // Divide the score by 6 and display the result
+        const dividedScore = (parseInt(userScore) / 10).toFixed(2);
+        document.getElementById('userScore').textContent = dividedScore;
+    }
+</script>
+
+{% endblock %}

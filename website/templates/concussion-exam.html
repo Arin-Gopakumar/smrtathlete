@@ -1,0 +1,224 @@
+<!-- concussion-exam.html -->
+{% extends "base.html" %}
+{% block title %}Concussions Exam{% endblock %}
+
+{% block content %}
+<style>
+    /* Custom CSS for shifting questions to the left */
+    .question-label {
+        text-align: left;
+    }
+
+    /* Custom CSS for padding the slider labels */
+    .form-check {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 1rem; /* Adjust the padding as needed */
+    }
+
+    /* Custom CSS for labels of the slider */
+    .slider-label {
+        color: white;
+    }
+
+    /* Custom CSS for changing the slider thumb color to green */
+    input[type="range"]::-webkit-slider-thumb {
+        background-color: green;
+    }
+
+    input[type="range"]::-moz-range-thumb {
+        background-color: green;
+    }
+
+    input[type="range"]::-ms-thumb {
+        background-color: green;
+    }
+</style>
+
+<script>
+    // Function to update the slider label when the slider value changes
+    function updateSliderLabel(sliderId) {
+        const sliderValue = document.getElementById(sliderId).value;
+        const sliderLabel = document.getElementById(sliderId + '-label');
+        sliderLabel.innerHTML = getIntervalName(sliderValue);
+    }
+
+    // Function to get the interval name based on the slider value
+    function getIntervalName(value) {
+        value = parseInt(value);
+        if (value < 1) {
+            return "None";
+        } if (value <= 25) {
+            return "Mild";
+        } else if (value <= 50) {
+            return "Medium";
+        } else if (value <= 75) {
+            return "High";
+        } else {
+            return "Severe";
+        }
+    }
+</script>
+
+<!-- ... existing code ... -->
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+            <h1 class="text-center mb-4 text-white" style="font-family: Roboto;"><b>Concussion Exam</b></h1>
+            <!-- Physical Symptoms Section -->
+            <h4 class="text-white mt-4" style="font-family: Roboto;"><b>Physical Symptoms</b></h4>
+            <div class="ml-md-3 mt-3 pl-md-5 mcq-options" id="options">
+
+                <!-- Question 1: Headaches -->
+                <div class="form-group slider-container">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <label class="text-white question-label" for="headaches" style="font-family: Roboto; "><b>Rate the intensity of headaches:</b></label>
+                        <span class="slider-label text-danger" id="headaches-label" style="font-family: Roboto; font-size: 18px"><b>None</b></span>
+                    </div>
+                    <input type="range" class="form-control-range" id="headaches" min="0" max="100" step="25" value="0" oninput="updateSliderLabel('headaches')">
+                </div>
+
+                <!-- Question 3: Blurred Vision or Double Vision -->
+                <div class="form-group slider-container">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <label class="text-white question-label" for="vision" style="font-family: Roboto;"><b>Have you noticed any blurred vision or double vision?</b></label>
+                        <span class="slider-label text-danger" id="vision-label" style="font-family: Roboto; font-size: 18px"><b>None</b></span>
+                    </div>
+                    <input type="range" class="form-control-range" id="vision" min="0" max="100" step="25" value="0" oninput="updateSliderLabel('vision')">
+                </div>
+
+                <!-- Question 4: Sensitivity to Light or Noise -->
+                <div class="form-group slider-container">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <label class="text-white question-label" for="sensitivity" style="font-family: Roboto;"><b>Have you noticed any sensitivity to light or noise?</b></label>
+                        <span class="slider-label text-danger" id="sensitivity-label" style="font-family: Roboto; font-size: 18px"><b>None</b></span>
+                    </div>
+                    <input type="range" class="form-control-range" id="sensitivity" min="0" max="100" step="25" value="0" oninput="updateSliderLabel('sensitivity')">
+                </div>
+
+                <!-- Question 5: Dizziness or Loss of Balance -->
+                <div class="form-group slider-container">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <label class="text-white question-label" for="dizziness" style="font-family: Roboto;"><b>Have you experienced any dizziness or loss of balance?</b></label>
+                        <span class="slider-label text-danger" id="dizziness-label" style="font-family: Roboto; font-size: 18px"><b>None</b></span>
+                    </div>
+                    <input type="range" class="form-control-range" id="dizziness" min="0" max="100" step="25" value="0" oninput="updateSliderLabel('dizziness')">
+                </div>
+
+            </div>
+
+            <!-- Cognitive Impairment Section -->
+            <br>
+            <h4 class="text-white mt-4" style="font-family: Roboto;"><b>Cognitive Impairment</b></h4>
+            <div class="ml-md-3 mt-3 pl-md-5 mcq-options" id="options">
+
+                <!-- Question 1: Fatigue -->
+                <div class="form-group slider-container">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <label class="text-white question-label" for="fatigue" style="font-family: Roboto;"><b>Rate the intensity of fatigue or drowsiness:</b></label>
+                        <span class="slider-label text-danger" id="fatigue-label" style="font-family: Roboto; font-size: 18px"><b>None</b></span>
+                    </div>
+                    <input type="range" class="form-control-range" id="fatigue" min="0" max="100" step="25" value="0" oninput="updateSliderLabel('fatigue')">
+                </div>
+
+                <!-- Question 2: Confusion -->
+                <div class="form-group slider-container">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <label class="text-white question-label" for="confusion" style="font-family: Roboto;"><b>Rate the intensity of confusion or difficulties concentrating:</b></label>
+                        <span class="slider-label text-danger" id="confusion-label" style="font-family: Roboto; font-size: 18px"><b>None</b></span>
+                    </div>
+                    <input type="range" class="form-control-range" id="confusion" min="0" max="100" step="25" value="0" oninput="updateSliderLabel('confusion')">
+                </div>
+
+                <!-- Question 4: Feeling Confusion or Difficulties Concentrating -->
+                <div class="form-group slider-container">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <label class="text-white question-label" for="confusion-concentration" style="font-family: Roboto;"><b>Have you experienced any confusion or difficulties concentrating?</b></label>
+                        <span class="slider-label text-danger" id="confusion-concentration-label" style="font-family: Roboto; font-size: 18px"><b>None</b></span>
+                    </div>
+                    <input type="range" class="form-control-range" id="confusion-concentration" min="0" max="100" step="25" value="0" oninput="updateSliderLabel('confusion-concentration')">
+                </div>
+
+            </div>
+
+            <!-- Balance Issues Section -->
+            <br>
+            <h4 class="text-white mt-4" style="font-family: Roboto;"><b>Balance Issues</b></h4>
+            <div class="ml-md-3 mt-3 pl-md-5 mcq-options" id="options">
+
+                <!-- Question 1: Difficulty Walking -->
+                <div class="form-group slider-container">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <label class="text-white question-label" for="walking" style="font-family: Roboto;"><b>Rate the difficulty in walking or keeping your balance while standing still:</b></label>
+                        <span class="slider-label text-danger" id="walking-label" style="font-family: Roboto; font-size: 18px"><b>None</b></span>
+                    </div>
+                    <input type="range" class="form-control-range" id="walking" min="0" max="100" step="25" value="0" oninput="updateSliderLabel('walking')">
+                </div>
+
+                <!-- Question 2: Coordination Issues -->
+                <div class="form-group slider-container">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <label class="text-white question-label" for="coordination" style="font-family: Roboto;"><b>Rate the intensity of coordination issues in your movements:</b></label>
+                        <span class="slider-label text-danger" id="coordination-label" style="font-family: Roboto; font-size: 18px"><b>None</b></span>
+                    </div>
+                    <input type="range" class="form-control-range" id="coordination" min="0" max="100" step="25" value="0" oninput="updateSliderLabel('coordination')">
+                </div>
+
+                <!-- Question 3: Standing on One Foot -->
+                <div class="form-group slider-container">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <label class="text-white question-label" for="standing-one-foot" style="font-family: Roboto;"><b>Rate the difficulty of standing on one foot without support for 20 seconds?</b></label>
+                        <span class="slider-label text-danger" id="standing-one-foot-label" style="font-family: Roboto; font-size: 18px"><b>None</b></span>
+                    </div>
+                    <input type="range" class="form-control-range" id="standing-one-foot" min="0" max="100" step="25" value="0" oninput="updateSliderLabel('standing-one-foot')">
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- ... existing code for buttons and scripts ... --><!-- ... existing code for buttons and scripts ... --><!-- ... existing code for buttons and scripts ... -->
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5 text-center">
+            <!-- Add a div to hold the "Chance That You Are Concussed:" text -->
+            <div id="concussedText" style="display: none">
+                <h3 class="text-white mb-4" style="font-family: Roboto;">Chance That You Are Concussed: <span id="totalNumber" style="color: #ffffff; font-family: Roboto;"></span>%</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-5 text-center">
+            <button class="btn btn-primary" id="submitBtn" onclick="submitForm()" style="font-family: Roboto;">Submit</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Function to handle form submission and store user's scores in the session
+    function submitForm() {
+        // Calculate the total score based on the slider values
+        const sliders = ['headaches', 'vision', 'sensitivity', 'dizziness', 'fatigue', 'confusion', 'confusion-concentration', 'walking', 'coordination', 'standing-one-foot'];
+        let totalScore = 0;
+        sliders.forEach(sliderId => {
+            const sliderValue = parseInt(document.getElementById(sliderId).value);
+            totalScore += sliderValue;
+        });
+
+        // Store the total score in the session
+        sessionStorage.setItem('userScore', totalScore);
+
+        // Placeholder redirection URL since "result" page is not available
+        // Replace 'your-result-page' with the actual URL of the result page.
+        window.location.href = '/result';
+    }
+</script>
+
+
+{% endblock %}

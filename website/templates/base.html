@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      crossorigin="anonymous"
+    />
+
+    <title>{% block title %}Home{% endblock %}</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background-color: #363737;
+      }
+  
+      .content {
+        flex: 1;
+      }
+  
+      /* Increase the font size of the navbar links */
+      .navbar-nav .nav-link,
+      .navbar-brand {
+        font-size: 18px !important; /* Add !important to override any conflicting styles */
+        color: white; /* Add the color to make the font visible on a black background */
+        font-family: Roboto; /* Set the font family to Roboto */
+      }
+      
+      /* Adjust the color and font family for the footer text */
+      footer {
+        background-color: #363737;
+      }
+      footer h6 {
+        color: white;
+        font-family: Roboto;
+      }
+    </style>   
+    
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-grey">
+      <!-- Home button aligned to the left -->
+      {% if user.is_authenticated %}
+      <a class="nav-item text-danger mr-4" id="smartAthlete" href="/" style="font-family: Copperplate, Copperplate Gothic Light, fantasy; font-size: 35px;"><b><b>SmrtAthlete</b></b></a>
+      <a class="nav-item text-white mr-4" id="ourTeam" href="/our-team" style="font-family: Roboto; font-size: 18px;">Our Team</a>  
+      <a class="nav-item text-white mr-4" id="ourTeam" href="/contact-us" style="font-family: Roboto; font-size: 18px;">Contact Us</a>  
+      <!-- Add the dropdown for Concussions -->
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-family: Roboto; font-size: 18px; background-color: #363737; box-shadow: none; outline: none;">
+          Concussions
+        </button>
+        <div class="dropdown-menu text-white" style="background-color: #363737;" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item text-white" href="/concussion" style="font-family: Roboto; font-size: 18px; background-color: #363737;">Information</a>
+          <a class="dropdown-item text-white" href="/concussion-exam" style="font-family: Roboto; font-size: 18px; background-color: #363737;">Exam</a>
+          <a class="dropdown-item text-white" href="/concussion-faq" style="font-family: Roboto; font-size: 18px; background-color: #363737;">Concussion FAQ</a>
+          <!-- Add more links for other concussions if needed -->
+        </div>
+      </div>
+    
+      {% else %}
+      <a class="nav-item text-danger mr-4" id="smartAthlete" href="/" style="font-family: Copperplate, Copperplate Gothic Light, fantasy; font-size: 35px;"><b><b>SmrtAthlete</b></b></a>
+      {% endif %}
+    
+      <!-- Use ml-auto class to align the following links to the right -->
+      <div class="collapse navbar-collapse" id="navbar">
+        <div class="navbar-nav ml-auto">
+          {% if user.is_authenticated %}
+          <a class="nav-item nav-link text-white" id="logout" href="/logout" style="font-family: Roboto;">Logout</a>
+          {% else %}
+          <a class="nav-item nav-link text-white" id="login" href="/login" style="font-family: Roboto;">Login</a>
+          <a class="nav-item nav-link text-white" id="signUp" href="/sign-up" style="font-family: Roboto;">Sign Up</a>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+    
+
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %} {% if category ==
+    'error' %}
+    <div class="alert alert-danger alter-dismissable fade show" role="alert">
+      {{ message }}
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% else %}
+    <div class="alert alert-success alter-dismissable fade show" role="alert">
+      {{ message }}
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endif %} {% endfor %} {% endif %} {% endwith %}
+
+    <div class="container content">
+      {% block content %}
+      {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black mt-4 py-3">
+      <div class="container">
+        <h6 class="text-danger text-center" style="font-family: Roboto;"><b>© Smart Athlete, 2023</b></h6>
+      </div>
+    </footer>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    {% block javascript %}
+    <script type="text/javascript">
+      function deleteNote(noteId) {
+        fetch("/delete-note", {
+          method: "POST",
+          body: JSON.stringify({ noteId: noteId }),
+        }).then((_res) => {
+          window.location.href = "/";
+        });
+      }
+    </script>
+    {% endblock %}
+  </body>
+</html>
