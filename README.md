@@ -32,9 +32,17 @@ venv\Scripts\activate
 
 On macOS and Linux
 source venv/bin/activate
-4. Install the required packages from the `requirements.txt` file:
 
-pip install -r requirements.txt
+4. **Install Dependencies**: Install the required packages for this project. If you don't have a `requirements.txt` file, use the following commands to install the common packages needed for a Flask project.
+
+pip install Flask
+pip install Flask-Login
+pip install Flask-WTF
+pip install Flask-SQLAlchemy
+pip install Flask-Migrate
+pip install requests Pillow bcrypt
+
+
 ## Running the Application
 
 To run the Flask application, execute the following command from the root of the project directory:
