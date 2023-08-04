@@ -1,7 +1,7 @@
 Smart Athlete Web App
 =====================
 
-This is a web application for Smart Athlete, a platform that helps athletes track their progress and achieve their fitness goals. The app allows users to sign up, log in, and view their fitness notes. It also provides features like logging out and deleting notes.
+Our mission is simple. To empower athletes with knowledge about sports medicine and injury prevention through an innovative and user-friendly website, promoting sports safety and early detection of health risks.
 
 Flask Website Project README
 ============================
