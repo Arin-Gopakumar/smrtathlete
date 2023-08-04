@@ -35,7 +35,7 @@ On macOS and Linux:
 - `source venv/bin/activate`
 
 
-Install Dependencies: Install the required packages for this project. If you don't have a requirements.txt file, use the following commands to install the common packages needed for a Flask project:
+Install Dependencies: Install the required packages for this project. Use the following commands to install the common packages needed for a Flask project:
 - `pip install Flask`
 - `pip install Flask-Login`
 - `pip install Flask-WTF`
@@ -46,16 +46,5 @@ Install Dependencies: Install the required packages for this project. If you don
 
 The application will be accessible at `http://localhost:5000` in your web browser.
 
-## Configuration
-
-If the project requires any specific configuration, such as environment variables or database connections, make sure to update the appropriate configuration files. Add instructions on how to do this if necessary.
-
-## Contributing
-
-If you would like to contribute to this project, please follow the guidelines in the CONTRIBUTING.md file.
-
-## License
-
-Include the license information for the project, such as MIT, Apache, etc.
 
 
